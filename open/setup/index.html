@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>アプリを開く</title>
+<style>
+  /* アプリが入っていれば、この住所を押すとアプリが直接開く（このページは出ない）。
+     アプリが開かなかったときだけ、このページが出る。アプリ専用の住所で開き直すボタンと、App Storeへの入口を出す */
+  :root { --bg: #f5f5f7; --card: #fff; --fg: #111; --sub: #6b6b70; --accent: #2563eb; }
+  @media (prefers-color-scheme: dark) { :root { --bg: #0f0f0f; --card: #1c1c1e; --fg: #fff; --sub: #9a9aa0; --accent: #4f8cff; } }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", sans-serif; }
+  main { max-width: 420px; margin: 0 auto; padding: 72px 20px; text-align: center; }
+  p { color: var(--sub); line-height: 1.6; }
+  a.btn { display: block; margin-top: 18px; padding: 15px; border-radius: 14px; background: var(--accent); color: #fff; font-weight: 700; text-decoration: none; }
+  a.sub { display: block; margin-top: 14px; color: var(--sub); }
+</style>
+</head>
+<body>
+<main>
+  <h1 style="font-size:19px">「おすすめ・ショート非表示 for Y」を開く</h1>
+  <p>アプリが開かなかったときは、下のボタンを押してください。</p>
+  <a class="btn" id="open" href="osusumehide://setup">アプリを開く</a>
+  <a class="sub" href="https://apps.apple.com/app/id6822572390">アプリが入っていないときは、App Storeから入れてください</a>
+</main>
+<script>
+  // どこを開くか（/open/setup は設定画面、/open/home はアプリの最初の画面）
+  if (location.pathname.indexOf("/open/home") === 0) document.getElementById("open").href = "osusumehide://";
+</script>
+</body>
+</html>
